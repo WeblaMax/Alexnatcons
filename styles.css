@@ -136,13 +136,6 @@ section{padding-block:clamp(72px,9vw,112px)}
 .svc p{margin:0;color:var(--text-2);font-size:16px}
 .svc ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 .svc li{font-family:var(--f-mono);font-size:12px;background:var(--accent-soft);color:var(--carbon);padding:3px 10px;border-radius:99px}
-/* Desktop: piramidă — 3 carduri jos (Construcții, Apă, Demolări), 2 sus (Lucrări de teren, Utilaje) */
-@media (min-width:901px){
-  .services{grid-template-columns:repeat(6,1fr)}
-  .svc{grid-column:span 2;grid-row:2}
-  .svc:nth-child(4){grid-column:2 / 4;grid-row:1}
-  .svc:nth-child(5){grid-column:4 / 6;grid-row:1}
-}
 @media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.services{grid-template-columns:1fr}}
 
@@ -373,3 +366,26 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
   .hero p.lead{margin-left:auto}
   .hero .ctas{justify-content:flex-end}
 }
+
+/* Servicii pe coloane, cu slideshow de poze în fiecare coloană */
+.services{grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{--px:26px;--py:28px;padding:var(--py) var(--px);overflow:hidden}
+.svc .ico{display:none}
+.svc-media{position:relative;aspect-ratio:4/3;margin:calc(var(--py)*-1) calc(var(--px)*-1) 16px;background:var(--surface-2);overflow:hidden;border-bottom:1px solid var(--border)}
+.svc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.svc-media img.is-active{opacity:1}
+.svc-ph{display:grid;place-items:center;color:var(--accent)}
+.svc-ph .ph-ico{display:block;width:30%;height:auto}
+.svc-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.svc-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(30,32,35,.25);transition:background .3s,transform .3s}
+.svc-dots i.on{background:#fff;transform:scale(1.25)}
+@media (min-width:1101px){
+  .services{grid-template-columns:repeat(5,1fr);gap:16px}
+  .svc{--px:16px;--py:18px}
+  .svc h3{font-size:25px}
+  .svc p{font-size:14.5px}
+  .svc li{font-size:11px;padding:3px 8px}
+  .svc .code{font-size:11px}
+}
+@media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc{--px:20px;--py:22px}.services{grid-template-columns:1fr}.svc-media{aspect-ratio:16/10}}

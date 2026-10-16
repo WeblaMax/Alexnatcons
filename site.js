@@ -101,6 +101,30 @@ const waHref = msg => 'https://wa.me/' + PHONE_DIGITS + '?text=' + encodeURIComp
     });
   }
 
+  /* servicii: poze care se schimbă automat la 5 secunde în fiecare coloană */
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) $$('[data-slideshow]').forEach((box, bi) => {
+    const imgs = $$('img', box), dots = $$('.svc-dots i', box);
+    if (imgs.length < 2) return;
+    let cur = 0;
+    if (dots[0]) dots[0].classList.add('on');
+    const load = img => new Promise(res => {
+      if (img.getAttribute('src') || !img.dataset.src) return res();
+      img.onload = img.onerror = () => res();
+      img.src = img.dataset.src;
+    });
+    const next = async () => {
+      if (document.hidden) return;
+      const n = (cur + 1) % imgs.length;
+      await load(imgs[n]);
+      imgs[cur].classList.remove('is-active'); imgs[n].classList.add('is-active');
+      if (dots[cur]) dots[cur].classList.remove('on');
+      if (dots[n]) dots[n].classList.add('on');
+      cur = n;
+    };
+    setTimeout(() => setInterval(next, 5000), bi * 700);   // coloanele nu se schimbă toate odată
+  });
+
   /* apariție discretă la scroll */
   const els = $$('.reveal');
   if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
