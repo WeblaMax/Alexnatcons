@@ -73,195 +73,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
 <style>
-/* Paletă calmă construită pe culorile logoului: carbon + turcoaz, turcoazul doar ca accent (~10%) */
-:root{
-  --bg:#F5F7F8;
-  --surface:#FFFFFF;
-  --surface-2:#ECEFF1;
-  --carbon:#2B2D31;
-  --carbon-deep:#1E2023;
-  --text-2:#5C6168;
-  --muted:#8A9097;
-  --border:#DDE1E4;
-  --accent:#14B8C4;
-  --accent-ink:#0A7780;
-  --accent-soft:#E3F6F8;
-  --on-dark:#C9CED3;
-  --shadow-1:0 1px 2px rgba(43,45,49,.06);
-  --shadow-2:0 8px 24px rgba(43,45,49,.08);
-  --r:12px;
-  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --wrap:1180px;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{background:var(--bg);color:var(--text-2);font-family:var(--f-body);font-size:17px;line-height:1.65}
-a{color:var(--accent-ink)}
-a:hover{text-decoration:underline}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);text-transform:uppercase;line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em;color:var(--carbon)}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-body);font-weight:600;font-size:15px;padding:14px 24px;border:2px solid var(--carbon);border-radius:8px;background:var(--carbon);color:#fff;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}
-.btn:hover{background:var(--accent-ink);border-color:var(--accent-ink);text-decoration:none}
-.btn.ghost{background:transparent;color:var(--carbon)}
-.btn.ghost:hover{background:var(--accent-soft);border-color:var(--carbon);color:var(--carbon)}
-.form .btn,.order .btn{justify-content:center}
-.btn.sm{padding:9px 14px;font-size:14px}
-
-/* Header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:6px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo:hover{text-decoration:none}
-.logo .mark{flex:none;width:76px;height:76px;display:block}
-.logo b{display:block;font-family:var(--f-display);font-size:30px;font-weight:900;letter-spacing:.02em;color:var(--carbon);line-height:1}
-.logo small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--text-2);letter-spacing:.12em;margin-top:3px}
-.links{display:flex;gap:26px;align-items:center}
-.links a{position:relative;text-decoration:none;font-size:14px;font-weight:500;color:var(--carbon);padding-block:6px}
-.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.links a:hover{color:var(--accent-ink)}
-.links a:hover::after{transform:scaleX(1)}
-.cart-btn{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--carbon);padding:8px 12px;cursor:pointer;font:500 14px var(--f-body);display:flex;gap:8px;align-items:center;transition:border-color .2s}
-.cart-btn:hover{border-color:var(--accent)}
-.cart-btn span{background:var(--accent);color:var(--carbon);font:600 12px var(--f-mono);padding:1px 7px;border-radius:99px}
-@media (max-width:820px){.links a:not(.cart-btn){display:none}.logo small{display:none}.logo .mark{width:60px;height:60px}}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg)}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(color-mix(in srgb,var(--border) 40%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--border) 40%,transparent) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(115deg,transparent 20%,#000 80%)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;padding-block:96px 88px;align-items:center}
-.hero .eyebrow{margin-bottom:18px}
-.hero h1{font-size:clamp(2.5rem,6vw,4.75rem);font-weight:900;line-height:1}
-.hero h1 em{font-style:normal;color:var(--accent-ink)}
-.hero p.lead{font-size:18px;color:var(--text-2);max-width:60ch;margin:24px 0 32px}
-.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.spec{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-1),var(--shadow-2);font-family:var(--f-mono);font-size:13px;overflow:hidden}
-.spec::before{content:"";display:block;height:4px;background:var(--accent)}
-.spec header{position:static;background:none;backdrop-filter:none;color:var(--carbon);padding:16px 20px 8px;border:0;display:flex;justify-content:space-between;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
-.spec dl{margin:0;padding:0 20px 12px}
-.spec div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--border)}
-.spec div:last-child{border:0}
-.spec dt{color:var(--text-2)}
-.spec dd{margin:0;color:var(--carbon);min-width:0;overflow-wrap:anywhere}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:56px 64px;gap:40px}}
-
-/* Bandă discretă */
-.strip{background:repeating-linear-gradient(-45deg,var(--carbon) 0 14px,color-mix(in srgb,var(--accent) 60%,transparent) 14px 28px);height:6px}
-
-/* Sections */
-section{padding-block:clamp(72px,9vw,112px)}
-#servicii{background:var(--bg)}
-#magazin{background:var(--surface-2)}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
-.sec-head h2{font-size:clamp(2rem,4.5vw,3.5rem);font-weight:800;position:relative;padding-top:18px;margin-top:10px}
-.sec-head h2::before{content:"";position:absolute;top:0;left:0;width:40px;height:3px;background:var(--accent)}
-.sec-head p{color:var(--text-2);max-width:46ch;margin:0}
-
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc{padding:28px 26px 30px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-1);display:flex;flex-direction:column;gap:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
-.svc:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow-2)}
-.svc .ico{width:32px;height:32px;color:var(--accent);margin-bottom:4px}
-.svc .code{font-family:var(--f-mono);font-size:12px;color:var(--accent-ink);letter-spacing:.12em;text-transform:uppercase}
-.svc h3{font-size:30px;font-weight:800}
-.svc p{margin:0;color:var(--text-2);font-size:16px}
-.svc ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.svc li{font-family:var(--f-mono);font-size:12px;background:var(--accent-soft);color:var(--carbon);padding:3px 10px;border-radius:99px}
-@media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.services{grid-template-columns:1fr}}
-
-/* Demolări: singura bandă de contrast */
-.demo{background:var(--carbon-deep);color:var(--on-dark)}
-.demo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.demo h2{font-size:clamp(2.25rem,5vw,4rem);font-weight:900;color:#fff}
-.demo p{font-size:17px;max-width:52ch;color:var(--on-dark);margin:20px 0 28px}
-.demo .eyebrow{color:var(--accent)}
-.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:0}
-.steps li{counter-increment:s;display:grid;grid-template-columns:64px 1fr;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,.14)}
-.steps li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
-.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-display);font-weight:900;font-size:40px;line-height:1;color:var(--accent)}
-.steps b{display:block;font-size:17px;color:#fff}
-.steps span{font-size:15px;color:var(--on-dark)}
-.demo .btn{background:var(--accent);color:var(--carbon);border-color:var(--accent)}
-.demo .btn:hover{background:#fff;border-color:#fff;color:var(--carbon)}
-@media (max-width:900px){.demo .wrap{grid-template-columns:1fr;gap:40px}}
-
-/* Shop */
-.shop-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.chip{background:var(--surface);border:1px solid var(--border);border-radius:99px;color:var(--carbon);padding:8px 16px;font:500 14px var(--f-body);cursor:pointer;transition:background .2s,border-color .2s}
-.chip:hover{background:var(--accent-soft)}
-.chip[aria-pressed="true"]{background:var(--carbon);color:#fff;border-color:var(--carbon)}
-.note{font-family:var(--f-mono);font-size:12px;color:var(--text-2);margin:0 0 24px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.prod{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-1);overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .25s,border-color .25s,box-shadow .25s}
-.prod:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow-2)}
-.prod .pic{aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;background:var(--surface-2);color:var(--accent);border-bottom:1px solid var(--border)}
-.prod .pic svg{width:42%;height:auto}
-.prod .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
-.prod .sku{font-family:var(--f-mono);font-size:11px;color:var(--text-2);letter-spacing:.08em}
-.prod h3{font-family:var(--f-body);text-transform:none;font-size:16px;font-weight:600;line-height:1.3}
-.prod p{margin:0;font-size:14px;color:var(--text-2);flex:1}
-.prod .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}
-.price{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--carbon);font-variant-numeric:tabular-nums}
-.price small{font-family:var(--f-mono);font-size:11px;color:var(--text-2);font-weight:400}
-@media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:420px){.grid{grid-template-columns:1fr}}
-
-/* Cart drawer */
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--border);box-shadow:var(--shadow-2);z-index:40;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) 20px;transform:translateX(100%);visibility:hidden;transition:transform .25s,visibility 0s linear .25s}
-.drawer.open{transform:none;visibility:visible;transition:transform .25s}
-.scrim{position:fixed;inset:0;background:rgba(30,32,35,.45);z-index:39}
-.drawer h3{font-size:34px;font-weight:800}
-.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.x{background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--carbon);width:36px;height:36px;font-size:20px;cursor:pointer}
-.x:hover{background:var(--accent-soft)}
-.items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:2px}
-.item{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--carbon)}
-.qty{display:flex;align-items:center;gap:6px;font-family:var(--f-mono)}
-.qty button{width:28px;height:28px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--carbon);cursor:pointer}
-.qty button:hover{background:var(--accent-soft)}
-.total{display:flex;justify-content:space-between;font-family:var(--f-mono);padding:14px 0;font-size:15px;color:var(--text-2)}
-.total b{color:var(--carbon);font-size:18px}
-.empty{color:var(--text-2);font-size:14px;padding:20px 0}
-.order{display:grid;gap:10px}
-label{font-size:13px;color:var(--text-2);display:grid;gap:4px}
-input,textarea,select{background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--carbon);font:15px var(--f-body);padding:10px 12px;width:100%}
-input:hover,textarea:hover,select:hover{border-color:var(--muted)}
-textarea{resize:vertical;min-height:70px}
-.done{background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;padding:14px;font-size:14px;color:var(--carbon)}
-.done pre{white-space:pre-wrap;font-family:var(--f-mono);font-size:12px;color:var(--text-2);margin:10px 0}
-
-/* Contact */
-.contact{background:var(--bg);border-top:1px solid var(--border)}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.cinfo{display:grid;gap:0;border-top:1px solid var(--border);align-content:start}
-.cinfo div{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--border)}
-.cinfo dt{font-family:var(--f-mono);font-size:12px;color:var(--text-2);text-transform:uppercase;letter-spacing:.1em;padding-top:4px}
-.cinfo dd{margin:0;font-size:17px;color:var(--carbon);min-width:0;overflow-wrap:anywhere}
-.social{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:18px}
-.social a{color:var(--carbon);display:block;width:40px;height:40px;transition:transform .2s,filter .2s}
-.social a:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.social svg{display:block;width:100%;height:100%}
-.form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-1),var(--shadow-2);padding:28px}
-.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:900px){.cgrid{grid-template-columns:1fr}.form .two{grid-template-columns:1fr}.cinfo div{grid-template-columns:1fr;gap:2px}}
-
-footer{background:var(--carbon-deep);padding-block:32px;font-size:14px;color:var(--on-dark)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-footer a{color:var(--on-dark);text-decoration:underline;text-decoration-color:transparent;transition:color .2s}
-footer a:hover{color:var(--accent);text-decoration-color:var(--accent)}
-.foot-brand{display:inline-flex;align-items:center;gap:10px}
-.foot-brand .mark{width:56px;height:56px;flex:none}
-
-/* Apariție discretă la scroll */
-html.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
-html.js .reveal.in{opacity:1;transform:none}
 
 /* ============ PRELOADER ALEXNATCONS ============ */
 :root{
@@ -362,13 +175,16 @@ html.anc-loading, html.anc-loading body{ overflow:hidden; }
       <svg class="mark" viewBox="0 0 400 400" role="img" aria-label="Logo ALEXNATCONS"><use href="#anc-mark"/></svg>
       <span><b>ALEXNATCONS</b><small>CONSTRUCȚII · UNGHENI</small></span>
     </a>
-    <nav class="links" aria-label="Navigare">
-      <a href="#servicii">Servicii</a>
-      <a href="#demolari">Demolări</a>
-      <a href="#magazin">Magazin vulcanizare</a>
-      <a href="#contact">Contact</a>
-      <button class="cart-btn" id="openCart" type="button" aria-label="Deschide coșul">Coș <span id="cartCount">0</span></button>
-    </nav>
+    <div class="nav-r">
+      <nav class="links" id="nav" aria-label="Navigare">
+        <a href="#servicii">Servicii</a>
+        <a href="#demolari">Demolări</a>
+        <a href="magazin.html">Magazin vulcanizare</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="call-btn" data-tel href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lbl">Sună acum</span></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
   </div>
 </header>
 
@@ -381,7 +197,7 @@ html.anc-loading, html.anc-loading body{ overflow:hidden; }
         <p class="lead">Lucrări de construcție pentru clădiri rezidențiale și comerciale, rețele de apă și canalizare, demolări controlate și un magazin cu piese și consumabile pentru vulcanizare.</p>
         <div class="ctas">
           <a class="btn" href="#contact">Cere o ofertă →</a>
-          <a class="btn ghost" href="#magazin">Magazin piese</a>
+          <a class="btn ghost" href="magazin.html">Magazin piese</a>
         </div>
       </div>
       <aside class="spec" aria-label="Date firmă">
@@ -433,21 +249,14 @@ html.anc-loading, html.anc-loading body{ overflow:hidden; }
     </div>
   </section>
 
-  <section id="magazin">
+  <section class="shop-banner" id="magazin" aria-labelledby="shop-title">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="eyebrow">Magazin</div><h2>Piese vulcanizare</h2></div>
-        <p>Consumabile pentru reparația anvelopelor, de la autoturisme la camioane. Adaugi în coș, trimiți comanda, te sunăm pentru confirmare.</p>
+      <div class="reveal">
+        <div class="eyebrow">Magazin</div>
+        <h2 id="shop-title">Piese și consumabile pentru vulcanizare</h2>
+        <p>Petice, ciuperci, valve, adezivi, scule — pentru autoturisme și camioane.</p>
       </div>
-      <div class="shop-bar" role="group" aria-label="Categorii">
-        <button class="chip" type="button" data-cat="toate" aria-pressed="true">Toate</button>
-        <button class="chip" type="button" data-cat="reparatie" aria-pressed="false">Reparație</button>
-        <button class="chip" type="button" data-cat="valve" aria-pressed="false">Valve</button>
-        <button class="chip" type="button" data-cat="echilibrare" aria-pressed="false">Echilibrare</button>
-        <button class="chip" type="button" data-cat="scule" aria-pressed="false">Scule</button>
-      </div>
-      <p class="note">Prețuri orientative — se confirmă la telefon.</p>
-      <div class="grid" id="grid"></div>
+      <a class="btn" href="magazin.html">Vezi catalogul →</a>
     </div>
   </section>
 
@@ -461,7 +270,7 @@ html.anc-loading, html.anc-loading body{ overflow:hidden; }
         <dl class="cinfo reveal">
           <div><dt>IDNO</dt><dd>1012609003196</dd></div>
           <div><dt>Adresă</dt><dd>MD-3601, mun. Ungheni, str. Burebista 20</dd></div>
-          <div><dt>Telefon</dt><dd><a href="tel:+37360621387">+373 606 21 387</a></dd></div>
+          <div><dt>Telefon</dt><dd><a data-tel data-phone-text href="#contact">Sună-ne</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:Alexnatcons@gmail.com">Alexnatcons@gmail.com</a></dd></div>
           <div><dt>Program</dt><dd>Lu–Vi 08:00–17:00</dd></div>
           <div><dt>Rețele sociale</dt><dd><span class="social">
@@ -494,109 +303,7 @@ html.anc-loading, html.anc-loading body{ overflow:hidden; }
   </div>
 </footer>
 
-<div class="scrim" id="scrim" hidden></div>
-<aside class="drawer" id="drawer" aria-label="Coș de cumpărături" aria-hidden="true">
-  <div class="dh"><h3>Coșul tău</h3><button class="x" id="closeCart" type="button" aria-label="Închide">×</button></div>
-  <div class="items" id="items"></div>
-  <div class="total"><span>Total estimat</span><b id="total">0 lei</b></div>
-  <form class="order" id="order" novalidate>
-    <label for="oname">Nume<input id="oname" required autocomplete="name"></label>
-    <label for="ophone">Telefon<input id="ophone" required type="tel" autocomplete="tel"></label>
-    <button class="btn" type="submit">Trimite comanda</button>
-  </form>
-  <div id="odone" class="done" hidden></div>
-</aside>
-
-<script>
-const ICONS_RAW={
-  patch:'<svg viewBox="0 0 60 60"><rect x="10" y="10" width="40" height="40" rx="8" fill="none" stroke="#9fe08a" stroke-width="3"/><circle cx="30" cy="30" r="9" fill="#9fe08a"/></svg>',
-  plug:'<svg viewBox="0 0 60 60"><rect x="26" y="6" width="8" height="36" fill="#9fe08a"/><path d="M18 42h24l-6 12H24z" fill="none" stroke="#9fe08a" stroke-width="3"/></svg>',
-  valve:'<svg viewBox="0 0 60 60"><rect x="25" y="6" width="10" height="14" fill="#9fe08a"/><rect x="22" y="20" width="16" height="30" rx="3" fill="none" stroke="#9fe08a" stroke-width="3"/><path d="M16 50h28" stroke="#9fe08a" stroke-width="4"/></svg>',
-  weight:'<svg viewBox="0 0 60 60"><g fill="#9fe08a"><rect x="8" y="24" width="10" height="14"/><rect x="20" y="24" width="10" height="14"/><rect x="32" y="24" width="10" height="14"/><rect x="44" y="24" width="8" height="14"/></g></svg>',
-  can:'<svg viewBox="0 0 60 60"><rect x="16" y="14" width="28" height="40" rx="3" fill="none" stroke="#9fe08a" stroke-width="3"/><rect x="24" y="6" width="12" height="8" fill="#9fe08a"/><path d="M16 30h28" stroke="#9fe08a" stroke-width="3"/></svg>',
-  tool:'<svg viewBox="0 0 60 60"><path d="M12 48 L36 24" stroke="#9fe08a" stroke-width="6" stroke-linecap="square"/><circle cx="42" cy="18" r="10" fill="none" stroke="#9fe08a" stroke-width="4"/></svg>',
-  tube:'<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#9fe08a" stroke-width="7"/><circle cx="30" cy="30" r="9" fill="none" stroke="#9fe08a" stroke-width="2"/></svg>'
-};
-const PRODUCTS=[
-  {id:"p1",cat:"reparatie",icon:"patch",sku:"PT-050",name:"Petice universale Ø50 mm",desc:"Set 50 buc, pentru camere și anvelope cu cameră.",price:180},
-  {id:"p2",cat:"reparatie",icon:"plug",sku:"CP-06",name:"Ciuperci reparație 6 mm",desc:"Reparație combinată din interior, 24 buc.",price:320},
-  {id:"p3",cat:"reparatie",icon:"patch",sku:"PR-TR",name:"Petice radiale camion",desc:"Pentru anvelope radiale R17,5–R22,5, 10 buc.",price:450},
-  {id:"p4",cat:"reparatie",icon:"can",sku:"AD-500",name:"Adeziv vulcanizare la rece",desc:"Soluție de lipire 500 ml cu pensulă.",price:210},
-  {id:"p5",cat:"valve",icon:"valve",sku:"TR413",name:"Valve TR413",desc:"Pentru jante tubeless autoturism, 100 buc.",price:390},
-  {id:"p6",cat:"valve",icon:"valve",sku:"TR414",name:"Valve TR414 lungi",desc:"Variantă lungă pentru capace mari, 100 buc.",price:420},
-  {id:"p7",cat:"valve",icon:"valve",sku:"V3-20",name:"Valve metalice camion",desc:"Cu piuliță și garnitură, 10 buc.",price:350},
-  {id:"p8",cat:"echilibrare",icon:"weight",sku:"GA-5",name:"Greutăți adezive 5 g",desc:"Bandă oțel zincat, 1 kg.",price:240},
-  {id:"p9",cat:"echilibrare",icon:"weight",sku:"GB-FE",name:"Greutăți bătute jantă fier",desc:"Set asortat 5–60 g, 100 buc.",price:260},
-  {id:"p10",cat:"echilibrare",icon:"tube",sku:"CR-15",name:"Con centrare 40–100 mm",desc:"Pentru mașina de echilibrat, ax 40 mm.",price:480},
-  {id:"p11",cat:"scule",icon:"tool",sku:"SC-RS",name:"Răzuitor pentru petice",desc:"Pregătește suprafața înainte de lipire.",price:150},
-  {id:"p12",cat:"scule",icon:"can",sku:"PS-1",name:"Pastă montaj anvelope 1 kg",desc:"Lubrifiant pentru dejantare și montare.",price:170}
-];
-const ICONS=Object.fromEntries(Object.entries(ICONS_RAW).map(([k,v])=>[k,v.replaceAll('#9fe08a','currentColor')]));
-let cart={};
-try{cart=JSON.parse(localStorage.getItem("anc-cart")||"{}")}catch(e){cart={}}
-const save=()=>{try{localStorage.setItem("anc-cart",JSON.stringify(cart))}catch(e){}};
-const $=s=>document.querySelector(s);
-const lei=n=>n.toLocaleString("ro-MD")+" lei";
-
-function renderGrid(cat){
-  $("#grid").innerHTML=PRODUCTS.filter(p=>cat==="toate"||p.cat===cat).map(p=>`
-    <article class="prod">
-      <div class="pic">${ICONS[p.icon]}</div>
-      <div class="body">
-        <span class="sku">${p.sku}</span>
-        <h3>${p.name}</h3>
-        <p>${p.desc}</p>
-        <div class="row"><span class="price">${p.price} <small>lei</small></span>
-        <button class="btn sm" type="button" data-add="${p.id}">Adaugă</button></div>
-      </div>
-    </article>`).join("");
-}
-function renderCart(){
-  const ids=Object.keys(cart).filter(k=>cart[k]>0);
-  $("#cartCount").textContent=ids.reduce((s,k)=>s+cart[k],0);
-  $("#items").innerHTML=ids.length?ids.map(k=>{const p=PRODUCTS.find(x=>x.id===k);return `
-    <div class="item"><div><b>${p.name}</b><br><span style="color:var(--text-2)">${lei(p.price*cart[k])}</span></div>
-    <div class="qty"><button type="button" data-dec="${k}" aria-label="Scade">−</button>${cart[k]}<button type="button" data-inc="${k}" aria-label="Adaugă">+</button></div></div>`}).join("")
-    :'<p class="empty">Coșul este gol. Alege piese din magazin.</p>';
-  $("#total").textContent=lei(ids.reduce((s,k)=>s+PRODUCTS.find(x=>x.id===k).price*cart[k],0));
-  $("#order").hidden=!ids.length;
-  save();
-}
-function openCart(o){$("#drawer").classList.toggle("open",o);$("#drawer").setAttribute("aria-hidden",!o);$("#scrim").hidden=!o}
-
-document.addEventListener("click",e=>{
-  const t=e.target.closest("button");if(!t)return;
-  if(t.dataset.cat){document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===t));renderGrid(t.dataset.cat)}
-  if(t.dataset.add){cart[t.dataset.add]=(cart[t.dataset.add]||0)+1;renderCart();t.textContent="Adăugat ✓";setTimeout(()=>t.textContent="Adaugă",1200)}
-  if(t.dataset.inc){cart[t.dataset.inc]++;renderCart()}
-  if(t.dataset.dec){cart[t.dataset.dec]--;if(cart[t.dataset.dec]<=0)delete cart[t.dataset.dec];renderCart()}
-});
-$("#openCart").onclick=()=>openCart(true);
-$("#closeCart").onclick=()=>openCart(false);
-$("#scrim").onclick=()=>openCart(false);
-
-$("#order").addEventListener("submit",e=>{
-  e.preventDefault();
-  const n=$("#oname").value.trim(),ph=$("#ophone").value.trim();
-  if(!n||!ph){$("#odone").hidden=false;$("#odone").textContent="Completează numele și telefonul.";return}
-  const lines=Object.keys(cart).map(k=>{const p=PRODUCTS.find(x=>x.id===k);return `${p.sku} ${p.name} × ${cart[k]} = ${p.price*cart[k]} lei`});
-  $("#odone").hidden=false;
-  $("#odone").innerHTML=`<b>Comanda e pregătită, ${n}.</b> Te vom suna la ${ph} pentru confirmare.<pre>${lines.join("\n")}\nTotal: ${$("#total").textContent}</pre>`;
-});
-$("#quote").addEventListener("submit",e=>{
-  e.preventDefault();
-  const n=$("#qname").value.trim(),ph=$("#qphone").value.trim();
-  $("#qdone").hidden=false;
-  $("#qdone").textContent=(!n||!ph)?"Completează numele și telefonul ca să te putem contacta.":`Mulțumim, ${n}. Cererea pentru „${$("#qtype").value}” e înregistrată — revenim la ${ph}.`;
-});
-renderGrid("toate");renderCart();
-(function(){const els=document.querySelectorAll(".reveal");
-  if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));return}
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12});
-  els.forEach(e=>io.observe(e));
-  setTimeout(()=>els.forEach(e=>e.classList.add("in")),4000);
-})();
-</script>
+<script src="site.js"></script>
 
 <script>
 

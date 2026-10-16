@@ -1,0 +1,19 @@
+/* Catalogul de produse. Pentru un produs nou, adaugă un singur obiect în listă.
+   categorie: reparatie | valve | echilibrare | scule
+   vehicul:   autoturisme | camioane | universal
+   imagine:   cale către poză (ex. 'assets/produse/pt-050.jpg') sau null → se afișează pictograma
+   pictograma: patch | plug | valve | weight | can | tool | tube (folosită doar când imagine = null) */
+const PRODUCTS = [
+  { id: 'p1',  cod: 'PT-050', nume: 'Petice universale Ø50 mm',    descriere: 'Set 50 buc, pentru camere și anvelope cu cameră.',   categorie: 'reparatie',   imagine: null, vehicul: 'universal',   pictograma: 'patch' },
+  { id: 'p2',  cod: 'CP-06',  nume: 'Ciuperci reparație 6 mm',     descriere: 'Reparație combinată din interior, 24 buc.',          categorie: 'reparatie',   imagine: null, vehicul: 'autoturisme', pictograma: 'plug' },
+  { id: 'p3',  cod: 'PR-TR',  nume: 'Petice radiale camion',       descriere: 'Pentru anvelope radiale R17,5–R22,5, 10 buc.',       categorie: 'reparatie',   imagine: null, vehicul: 'camioane',    pictograma: 'patch' },
+  { id: 'p4',  cod: 'AD-500', nume: 'Adeziv vulcanizare la rece',  descriere: 'Soluție de lipire 500 ml cu pensulă.',               categorie: 'reparatie',   imagine: null, vehicul: 'universal',   pictograma: 'can' },
+  { id: 'p5',  cod: 'TR413',  nume: 'Valve TR413',                 descriere: 'Pentru jante tubeless autoturism, 100 buc.',         categorie: 'valve',       imagine: null, vehicul: 'autoturisme', pictograma: 'valve' },
+  { id: 'p6',  cod: 'TR414',  nume: 'Valve TR414 lungi',           descriere: 'Variantă lungă pentru capace mari, 100 buc.',        categorie: 'valve',       imagine: null, vehicul: 'autoturisme', pictograma: 'valve' },
+  { id: 'p7',  cod: 'V3-20',  nume: 'Valve metalice camion',       descriere: 'Cu piuliță și garnitură, 10 buc.',                   categorie: 'valve',       imagine: null, vehicul: 'camioane',    pictograma: 'valve' },
+  { id: 'p8',  cod: 'GA-5',   nume: 'Greutăți adezive 5 g',        descriere: 'Bandă oțel zincat, 1 kg.',                           categorie: 'echilibrare', imagine: null, vehicul: 'autoturisme', pictograma: 'weight' },
+  { id: 'p9',  cod: 'GB-FE',  nume: 'Greutăți bătute jantă fier',  descriere: 'Set asortat 5–60 g, 100 buc.',                       categorie: 'echilibrare', imagine: null, vehicul: 'autoturisme', pictograma: 'weight' },
+  { id: 'p10', cod: 'CR-15',  nume: 'Con centrare 40–100 mm',      descriere: 'Pentru mașina de echilibrat, ax 40 mm.',             categorie: 'echilibrare', imagine: null, vehicul: 'universal',   pictograma: 'tube' },
+  { id: 'p11', cod: 'SC-RS',  nume: 'Răzuitor pentru petice',      descriere: 'Pregătește suprafața înainte de lipire.',            categorie: 'scule',       imagine: null, vehicul: 'universal',   pictograma: 'tool' },
+  { id: 'p12', cod: 'PS-1',   nume: 'Pastă montaj anvelope 1 kg',  descriere: 'Lubrifiant pentru dejantare și montare.',            categorie: 'scule',       imagine: null, vehicul: 'universal',   pictograma: 'can' }
+];
