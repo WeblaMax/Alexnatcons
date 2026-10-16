@@ -361,3 +361,8 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 .spec.fisa div{grid-template-columns:130px 1fr}
 .fisa-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 @media (max-width:600px){.fisa-actions .btn{flex:1 1 100%;justify-content:center}}
+
+/* Hero (desktop): același aspect, textul mutat spre marginea din stânga ca să rămână vizibilă locația din fotografie */
+@media (min-width:901px){
+  .hero .wrap{max-width:none;margin:0;padding-inline:clamp(24px,3vw,48px)}
+}
