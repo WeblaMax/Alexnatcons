@@ -89,14 +89,20 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 }
 
 /* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg)}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(color-mix(in srgb,var(--border) 40%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--border) 40%,transparent) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(115deg,transparent 20%,#000 80%)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--carbon-deep) url("assets/hero-road.webp") center 62%/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--carbon-deep) 90%,transparent) 0%,color-mix(in srgb,var(--carbon-deep) 80%,transparent) 45%,color-mix(in srgb,var(--carbon-deep) 38%,transparent) 100%)}
+@media (max-width:900px){.hero::before{background:color-mix(in srgb,var(--carbon-deep) 82%,transparent)}}
+@media (max-width:700px){.hero{background-image:url("assets/hero-road-sm.webp")}}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;padding-block:96px 88px;align-items:center}
-.hero .eyebrow{margin-bottom:18px}
-.hero h1{font-size:clamp(2.5rem,6vw,4.75rem);font-weight:900;line-height:1}
-.hero h1 em{font-style:normal;color:var(--accent-ink)}
-.hero p.lead{font-size:18px;color:var(--text-2);max-width:60ch;margin:24px 0 32px}
+.hero .eyebrow{margin-bottom:18px;color:var(--accent)}
+.hero h1{font-size:clamp(2.5rem,6vw,4.75rem);font-weight:900;line-height:1;color:#fff}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:18px;color:var(--on-dark);max-width:60ch;margin:24px 0 32px}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn{background:var(--accent);border-color:var(--accent);color:var(--carbon)}
+.hero .btn:hover{background:#fff;border-color:#fff;color:var(--carbon)}
+.hero .btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
 .spec{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-1),var(--shadow-2);font-family:var(--f-mono);font-size:13px;overflow:hidden}
 .spec::before{content:"";display:block;height:4px;background:var(--accent)}
 .spec header{position:static;background:none;backdrop-filter:none;color:var(--carbon);padding:16px 20px 8px;border:0;display:flex;justify-content:space-between;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
