@@ -1,4 +1,47 @@
-<!doctype html><html><head><meta charset=utf8><script>document.documentElement.classList.add("js")</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="ro"><head><meta charset=utf8><script>document.documentElement.classList.add("js")</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>ALEXNATCONS Ungheni</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=block" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<meta property="og:image" content="assets/logo.jpg">
+<meta name="description" content="ALEXNATCONS SRL, Ungheni — construcții, demolări, rețele de canalizare și magazin de piese pentru vulcanizare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ============ PRELOADER ALEXNATCONS ============ */
+:root{
+  --anc-turquoise:#14B8C4;   /* roata dințată */
+  --anc-carbon:#2B2D31;      /* excavator, text, munți */
+  --anc-carbon-2:#5C6168;    /* munții din spate */
+  --anc-light:#F5F7F8;       /* fundal + bandă */
+  --anc-sky:#E9ECEE;         /* cerul din semicercul de sus */
+}
+html.anc-loading, html.anc-loading body{ overflow:hidden; }
+
+#anc-preloader{
+  position:fixed; inset:0; z-index:99999;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--anc-light);
+  transition:opacity .55s ease, transform .55s ease, visibility 0s linear .55s;
+}
+#anc-preloader.anc-done{ opacity:0; transform:translateY(-14px); visibility:hidden; pointer-events:none; }
+
+#anc-logo{
+  width:min(300px, 62vw); height:auto; overflow:visible;
+  opacity:0; transform:scale(.94);
+}
+#anc-preloader.anc-done #anc-logo{ transform:scale(.9); transition:transform .55s ease; }
+
+/* toate piesele animate se rotesc în coordonatele locale (pivot calculat în JS) */
+#anc-gear, #anc-boom, #anc-stick, #anc-bucket{
+  transform-box:view-box; transform-origin:0 0;
+}
+.anc-txt{ font-family:'Cinzel', Georgia, 'Times New Roman', serif; font-weight:800; }
+</style>
+</head><body>
 <div id="anc-preloader" aria-hidden="true">
   <svg id="anc-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -63,49 +106,6 @@
     <text class="anc-txt" x="200" y="235" text-anchor="middle" font-size="27" letter-spacing="1.5" fill="var(--anc-carbon)">ALEXNATCONS</text>
   </svg>
 </div>
-<title>ALEXNATCONS Ungheni</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=block" rel="stylesheet">
-<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
-<link rel="apple-touch-icon" href="assets/logo.jpg">
-<meta property="og:image" content="assets/logo.jpg">
-<meta name="description" content="ALEXNATCONS SRL, Ungheni — construcții, demolări, rețele de canalizare și magazin de piese pentru vulcanizare.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css">
-<style>
-
-/* ============ PRELOADER ALEXNATCONS ============ */
-:root{
-  --anc-turquoise:#14B8C4;   /* roata dințată */
-  --anc-carbon:#2B2D31;      /* excavator, text, munți */
-  --anc-carbon-2:#5C6168;    /* munții din spate */
-  --anc-light:#F5F7F8;       /* fundal + bandă */
-  --anc-sky:#E9ECEE;         /* cerul din semicercul de sus */
-}
-html.anc-loading, html.anc-loading body{ overflow:hidden; }
-
-#anc-preloader{
-  position:fixed; inset:0; z-index:99999;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--anc-light);
-  transition:opacity .55s ease, transform .55s ease, visibility 0s linear .55s;
-}
-#anc-preloader.anc-done{ opacity:0; transform:translateY(-14px); visibility:hidden; pointer-events:none; }
-
-#anc-logo{
-  width:min(300px, 62vw); height:auto; overflow:visible;
-  opacity:0; transform:scale(.94);
-}
-#anc-preloader.anc-done #anc-logo{ transform:scale(.9); transition:transform .55s ease; }
-
-/* toate piesele animate se rotesc în coordonatele locale (pivot calculat în JS) */
-#anc-gear, #anc-boom, #anc-stick, #anc-bucket{
-  transform-box:view-box; transform-origin:0 0;
-}
-.anc-txt{ font-family:'Cinzel', Georgia, 'Times New Roman', serif; font-weight:800; }
-</style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="anc-mark" viewBox="0 0 400 400">
     <defs>
