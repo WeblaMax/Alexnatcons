@@ -364,5 +364,12 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 
 /* Hero (desktop): același aspect, textul mutat spre marginea din stânga ca să rămână vizibilă locația din fotografie */
 @media (min-width:901px){
-  .hero .wrap{max-width:none;margin:0;padding-inline:clamp(24px,3vw,48px)}
+  .hero .wrap{max-width:none;margin:0;padding-inline:clamp(24px,6.2vw,96px) clamp(24px,3vw,48px)}
+}
+
+/* Hero (mobil/tabletă): textul aliniat total la dreapta */
+@media (max-width:900px){
+  .hero .wrap>div{margin-left:auto;text-align:right}
+  .hero p.lead{margin-left:auto}
+  .hero .ctas{justify-content:flex-end}
 }
