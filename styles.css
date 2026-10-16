@@ -170,6 +170,12 @@ section{padding-block:clamp(72px,9vw,112px)}
 .g-item a{display:block;cursor:zoom-in}
 .g-item a:focus-visible{outline-offset:-2px}
 .g-item img{display:block;width:100%;height:auto;background:var(--surface-2)}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px}
+a.chip{display:inline-flex;align-items:center;text-decoration:none}
+a.chip:hover{text-decoration:none}
+.util-block{scroll-margin-top:110px}
+.util-block+.util-block{margin-top:72px}
+.util-block .sec-head{margin-bottom:32px}
 .gallery-empty{display:flex;flex-direction:column;align-items:center;gap:20px;padding:72px 16px;text-align:center;background:var(--surface);border:1px dashed var(--border);border-radius:var(--r)}
 .gallery-empty p{margin:0}
 
