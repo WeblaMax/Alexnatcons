@@ -50,7 +50,7 @@ const waHref = msg => 'https://wa.me/' + PHONE_DIGITS + '?text=' + encodeURIComp
     btn.addEventListener('click', () => set(!nav.classList.contains('open')));
     nav.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
-    window.matchMedia('(min-width:821px)').addEventListener('change', e => { if (e.matches) set(false); });
+    window.matchMedia('(min-width:1021px)').addEventListener('change', e => { if (e.matches) set(false); });
   }
 
   /* formularul de ofertă (doar pe index) */
