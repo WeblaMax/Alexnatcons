@@ -91,14 +91,22 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 /* Hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--carbon-deep) url("assets/hero-road.webp") center 62%/cover no-repeat}
 .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--carbon-deep) 90%,transparent) 0%,color-mix(in srgb,var(--carbon-deep) 80%,transparent) 45%,color-mix(in srgb,var(--carbon-deep) 38%,transparent) 100%)}
+@media (min-width:901px){
+  .hero{display:flex;align-items:flex-end;min-height:clamp(760px,90vh,880px);background-position:center 100%}
+  .hero::before{background:linear-gradient(0deg,color-mix(in srgb,var(--carbon-deep) 94%,transparent) 0,color-mix(in srgb,var(--carbon-deep) 88%,transparent) 42%,color-mix(in srgb,var(--carbon-deep) 30%,transparent) 70%,color-mix(in srgb,var(--carbon-deep) 6%,transparent) 100%)}
+  .hero .wrap{width:100%;padding-block:56px 52px;align-items:end}
+  .hero h1{font-size:clamp(2.6rem,4.2vw,3.4rem)}
+  .hero p.lead{font-size:17px;margin:18px 0 26px;max-width:54ch}
+}
 @media (max-width:900px){
-  .hero{background-size:auto 640px;background-position:62% 0}
-  .hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--carbon-deep) 78%,transparent) 0,color-mix(in srgb,var(--carbon-deep) 72%,transparent) 360px,var(--carbon-deep) 640px)}
+  .hero .wrap{padding-top:250px}  /* sus rămâne loc pentru fotografie (locația) */
+  .hero{background-size:auto 480px;background-position:36% 0}
+  .hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--carbon-deep) 12%,transparent) 0,color-mix(in srgb,var(--carbon-deep) 22%,transparent) 200px,color-mix(in srgb,var(--carbon-deep) 82%,transparent) 330px,var(--carbon-deep) 480px)}
   .hero .eyebrow{color:var(--on-dark)}
 }
 @media (max-width:700px){.hero{background-image:url("assets/hero-road-sm.webp")}}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;padding-block:96px 88px;align-items:center}
-.hero .eyebrow{margin-bottom:18px;color:var(--accent)}
+.hero .eyebrow{display:inline-block;margin-bottom:18px;padding:5px 10px;border-radius:4px;color:#fff;background:color-mix(in srgb,var(--carbon-deep) 72%,transparent)}
 .hero h1{font-size:clamp(2.5rem,6vw,4.75rem);font-weight:900;line-height:1;color:#fff}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero p.lead{font-size:18px;color:var(--on-dark);max-width:60ch;margin:24px 0 32px}
@@ -115,7 +123,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .spec div:last-child{border:0}
 .spec dt{color:var(--text-2)}
 .spec dd{margin:0;color:var(--carbon);min-width:0;overflow-wrap:anywhere}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:56px 64px;gap:40px}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:250px 64px;gap:40px}}
 
 /* Bandă discretă */
 .strip{background:repeating-linear-gradient(-45deg,var(--carbon) 0 14px,color-mix(in srgb,var(--accent) 60%,transparent) 14px 28px);height:6px}
@@ -315,7 +323,7 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
   .btn{min-height:48px}
   input,textarea,select{font-size:16px}  /* evită zoom-ul automat pe iPhone */
 
-  .hero .wrap{padding-block:36px 44px;gap:32px}
+  .hero .wrap{padding-block:250px 44px;gap:32px}
   .hero h1{font-size:clamp(2.4rem,12vw,3.1rem)}
   .hero p.lead{font-size:16.5px;margin:18px 0 26px}
   .hero .ctas{flex-direction:column;gap:10px}
