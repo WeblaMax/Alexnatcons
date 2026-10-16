@@ -127,6 +127,13 @@ section{padding-block:clamp(72px,9vw,112px)}
 .svc p{margin:0;color:var(--text-2);font-size:16px}
 .svc ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 .svc li{font-family:var(--f-mono);font-size:12px;background:var(--accent-soft);color:var(--carbon);padding:3px 10px;border-radius:99px}
+/* Desktop: piramidă — 3 carduri jos (Construcții, Apă, Demolări), 2 sus (Lucrări de teren, Utilaje) */
+@media (min-width:901px){
+  .services{grid-template-columns:repeat(6,1fr)}
+  .svc{grid-column:span 2;grid-row:2}
+  .svc:nth-child(4){grid-column:2 / 4;grid-row:1}
+  .svc:nth-child(5){grid-column:4 / 6;grid-row:1}
+}
 @media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.services{grid-template-columns:1fr}}
 
