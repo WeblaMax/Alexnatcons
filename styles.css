@@ -146,6 +146,25 @@ section{padding-block:clamp(72px,9vw,112px)}
 .demo .btn:hover{background:#fff;border-color:#fff;color:var(--carbon)}
 @media (max-width:900px){.demo .wrap{grid-template-columns:1fr;gap:40px}}
 
+/* Carduri servicii clicabile */
+.svc{position:relative}
+.svc-link{color:inherit;text-decoration:none}
+.svc-link::after{content:"";position:absolute;inset:0;border-radius:var(--r)}
+.svc-link:hover{text-decoration:none}
+.svc-link:focus-visible{outline:none}
+.svc:has(.svc-link:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.svc .more{margin-top:auto;padding-top:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.svc:hover .more{text-decoration:underline}
+
+/* Pagini de servicii: galerie (goală deocamdată) */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery figure{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery-empty{display:flex;flex-direction:column;align-items:center;gap:20px;padding:72px 16px;text-align:center;background:var(--surface);border:1px dashed var(--border);border-radius:var(--r)}
+.gallery-empty p{margin:0}
+@media (max-width:900px){.gallery{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.gallery{grid-template-columns:1fr}}
+
 /* Banner magazin (index) */
 section.shop-banner{background:var(--surface-2);border-block:1px solid var(--border);padding-block:clamp(36px,5vw,52px)}
 .shop-banner .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap}
