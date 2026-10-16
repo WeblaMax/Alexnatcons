@@ -65,6 +65,42 @@ const waHref = msg => 'https://wa.me/' + PHONE_DIGITS + '?text=' + encodeURIComp
       : 'Mulțumim, ' + n + '. Cererea pentru „' + document.getElementById('qtype').value + '” e înregistrată — revenim la ' + ph + '.';
   });
 
+  /* galerie: vizualizare mărită (lightbox) */
+  const items = $$('.gallery .g-item a');
+  if (items.length && typeof HTMLDialogElement === 'function') {
+    const dlg = document.createElement('dialog');
+    dlg.className = 'lightbox';
+    dlg.setAttribute('aria-label', 'Galerie foto');
+    dlg.innerHTML = '<button class="lb-btn lb-close" type="button" aria-label="Închide">×</button>' +
+      '<button class="lb-btn lb-prev" type="button" aria-label="Poza anterioară">‹</button>' +
+      '<figure class="lb-fig"><img alt=""><figcaption></figcaption></figure>' +
+      '<button class="lb-btn lb-next" type="button" aria-label="Poza următoare">›</button>';
+    document.body.appendChild(dlg);
+    const img = dlg.querySelector('img'), cap = dlg.querySelector('figcaption');
+    let cur = 0;
+    const show = i => {
+      cur = (i + items.length) % items.length;
+      const a = items[cur], t = a.querySelector('img');
+      img.src = a.href; img.alt = t.alt; cap.textContent = t.alt + ' (' + (cur + 1) + '/' + items.length + ')';
+    };
+    items.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); show(i); dlg.showModal(); }));
+    dlg.querySelector('.lb-close').addEventListener('click', () => dlg.close());
+    dlg.querySelector('.lb-prev').addEventListener('click', () => show(cur - 1));
+    dlg.querySelector('.lb-next').addEventListener('click', () => show(cur + 1));
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      if (e.key === 'ArrowRight') show(cur + 1);
+    });
+    let x0 = null;
+    dlg.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    dlg.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+    });
+  }
+
   /* apariție discretă la scroll */
   const els = $$('.reveal');
   if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
