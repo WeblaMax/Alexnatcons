@@ -361,14 +361,3 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 .spec.fisa div{grid-template-columns:130px 1fr}
 .fisa-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 @media (max-width:600px){.fisa-actions .btn{flex:1 1 100%;justify-content:center}}
-
-/* Hero (desktop): textul în colțul din stânga-jos, fotografia (locația) rămâne vizibilă deasupra */
-@media (min-width:901px){
-  .hero{display:flex;align-items:flex-end;min-height:clamp(720px,90vh,860px);background-position:center 100%}
-  .hero::before{background:
-    linear-gradient(90deg,color-mix(in srgb,var(--carbon-deep) 42%,transparent) 0,transparent 62%),
-    linear-gradient(0deg,color-mix(in srgb,var(--carbon-deep) 90%,transparent) 0,color-mix(in srgb,var(--carbon-deep) 76%,transparent) 36%,color-mix(in srgb,var(--carbon-deep) 28%,transparent) 62%,color-mix(in srgb,var(--carbon-deep) 4%,transparent) 100%)}
-  .hero .wrap{width:100%;padding-block:56px 44px;align-items:end}
-  .hero h1{font-size:clamp(2.6rem,4.2vw,3.4rem)}
-  .hero p.lead{font-size:17px;margin:16px 0 24px;max-width:54ch}
-}
