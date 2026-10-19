@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Administrare poze — ALEXNATCONS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="adm">
+
+<header class="adm-bar">
+  <div class="wrap adm-bar-in">
+    <strong class="adm-title">ALEXNATCONS · Administrare poze</strong>
+    <span class="adm-bar-r">
+      <a href="index.html" class="adm-link">← Înapoi la site</a>
+      <button type="button" class="adm-link" id="logout" hidden>Deconectare</button>
+    </span>
+  </div>
+</header>
+
+<main class="wrap adm-main">
+
+  <!-- 1. Conectare -->
+  <section id="login" class="adm-card" aria-labelledby="login-h">
+    <h1 id="login-h">Conectare</h1>
+    <p>Lipește tokenul GitHub (îl creezi o singură dată, pașii sunt în <b>ADMIN-GHID.md</b>). Rămâne salvat doar în acest browser.</p>
+    <label for="token">Token GitHub</label>
+    <input id="token" type="password" autocomplete="off" placeholder="github_pat_…" spellcheck="false">
+    <button class="btn" id="connect" type="button">Conectează</button>
+    <p class="adm-msg" id="login-msg" role="status"></p>
+  </section>
+
+  <!-- 2. Panou -->
+  <section id="panel" hidden>
+    <div class="adm-card">
+      <h1>Poze pe site</h1>
+      <div class="adm-row">
+        <label for="cat">Subcategoria</label>
+        <select id="cat"></select>
+      </div>
+
+      <div class="adm-drop" id="drop" tabindex="0" role="button" aria-label="Adaugă poze">
+        <input id="files" type="file" accept="image/*" multiple hidden>
+        <p><b>Trage pozele aici</b> sau apasă pentru a le alege.</p>
+        <small>Pozele se micșorează și se comprimă automat. Poți alege mai multe odată.</small>
+      </div>
+    </div>
+
+    <div class="adm-card">
+      <h2 id="list-h">Pozele din categorie</h2>
+      <p class="adm-hint">Scrie sub fiecare poză o descriere scurtă (apare pentru Google și pentru cei care nu văd poza). Cu ↑ ↓ schimbi ordinea; prima poză apare prima în card.</p>
+      <ul class="adm-list" id="list"></ul>
+      <p class="adm-empty" id="empty" hidden>Nu sunt poze în această categorie.</p>
+    </div>
+
+    <div class="adm-card adm-publish">
+      <div>
+        <strong id="summary">Nicio modificare.</strong>
+        <p class="adm-msg" id="msg" role="status"></p>
+      </div>
+      <button class="btn" id="publish" type="button" disabled>Publică modificările</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>

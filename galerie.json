@@ -1,0 +1,406 @@
+{
+ "constructii-civile": [
+  {
+   "src": "assets/lucrari/constructii-civile/constructii-metalice-02.webp",
+   "thumb": "assets/lucrari/constructii-civile/constructii-metalice-02-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/constructii-metalice-02-card.webp",
+   "alt": "Hală metalică în construcție, cu platforma de beton turnată",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/fundatii-01.webp",
+   "thumb": "assets/lucrari/constructii-civile/fundatii-01-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/fundatii-01-card.webp",
+   "alt": "Fundații din beton pe șantier, cu automacara în fundal",
+   "w": 720,
+   "h": 324
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/betonare-01.webp",
+   "thumb": "assets/lucrari/constructii-civile/betonare-01-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/betonare-01-card.webp",
+   "alt": "Turnarea platformei de beton cu autobetonieră și pompă",
+   "w": 720,
+   "h": 483
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/constructii-metalice-04.webp",
+   "thumb": "assets/lucrari/constructii-civile/constructii-metalice-04-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/constructii-metalice-04-card.webp",
+   "alt": "Montaj de ferme metalice cu autocamion-macara",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/fundatii-04.webp",
+   "thumb": "assets/lucrari/constructii-civile/fundatii-04-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/fundatii-04-card.webp",
+   "alt": "Autobetonieră lângă o tranșee pentru fundație",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/constructii-metalice-01.webp",
+   "thumb": "assets/lucrari/constructii-civile/constructii-metalice-01-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/constructii-metalice-01-card.webp",
+   "alt": "Montajul structurii metalice a unei hale",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/constructii-civile/fundatii-02.webp",
+   "thumb": "assets/lucrari/constructii-civile/fundatii-02-thumb.webp",
+   "card": "assets/lucrari/constructii-civile/fundatii-02-thumb.webp",
+   "alt": "Montaj la fundații cu ajutorul autocamionului-macara",
+   "w": 720,
+   "h": 324
+  }
+ ],
+ "apa-canalizare": [
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-01.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-01-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-01-card.webp",
+   "alt": "Tranșee pentru rețea de canalizare, cu nivelă laser pe trepied",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-06.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-06-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-06-card.webp",
+   "alt": "Conductă de canalizare portocalie montată în tranșee",
+   "w": 324,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-23.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-23-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-23-card.webp",
+   "alt": "Tuburi de canalizare montate într-o tranșee îngustă",
+   "w": 438,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-15.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-15-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-15-card.webp",
+   "alt": "Montarea unei conducte mari cu excavatorul",
+   "w": 581,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-07.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-07-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-07-card.webp",
+   "alt": "Cămin de vizitare și racord la rețeaua de canalizare",
+   "w": 324,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-18.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-18-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-18-card.webp",
+   "alt": "Conductă așezată în tranșee, cu excavatorul în fundal",
+   "w": 581,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-22.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-22-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-22-thumb.webp",
+   "alt": "Tuburi de canalizare într-o tranșee securizată cu bandă",
+   "w": 614,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-20.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-20-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-20-thumb.webp",
+   "alt": "Lucrări de rețea cu miniexcavator lângă o clădire",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-14.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-14-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-14-thumb.webp",
+   "alt": "Conductă de mari dimensiuni în tranșee",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/apa-canalizare/retele-10.webp",
+   "thumb": "assets/lucrari/apa-canalizare/retele-10-thumb.webp",
+   "card": "assets/lucrari/apa-canalizare/retele-10-thumb.webp",
+   "alt": "Montaj de conducte sub o structură metalică",
+   "w": 720,
+   "h": 324
+  }
+ ],
+ "demolari": [
+  {
+   "src": "assets/lucrari/demolari/demolare-01.webp",
+   "thumb": "assets/lucrari/demolari/demolare-01-thumb.webp",
+   "card": "assets/lucrari/demolari/demolare-01-card.webp",
+   "alt": "Demolarea unui zid vechi cu un excavator, cu praf și moloz în jur",
+   "w": 720,
+   "h": 542
+  },
+  {
+   "src": "assets/lucrari/demolari/demolare-02.webp",
+   "thumb": "assets/lucrari/demolari/demolare-02-thumb.webp",
+   "card": "assets/lucrari/demolari/demolare-02-card.webp",
+   "alt": "Moloz de cărămidă și beton într-o clădire, după demolarea interioară",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/demolari/demolare-03.webp",
+   "thumb": "assets/lucrari/demolari/demolare-03-thumb.webp",
+   "card": "assets/lucrari/demolari/demolare-03-card.webp",
+   "alt": "Spargerea unui zid de piatră cu ciocan demolator pentru un gol nou",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/demolari/demolare-04.webp",
+   "thumb": "assets/lucrari/demolari/demolare-04-thumb.webp",
+   "card": "assets/lucrari/demolari/demolare-04-card.webp",
+   "alt": "Excavator care demolează o casă veche de cărămidă",
+   "w": 483,
+   "h": 300
+  },
+  {
+   "src": "assets/lucrari/demolari/demolare-05.webp",
+   "thumb": "assets/lucrari/demolari/demolare-05-thumb.webp",
+   "card": "assets/lucrari/demolari/demolare-05-card.webp",
+   "alt": "Demolarea unei case vechi cu excavator pe șenile",
+   "w": 720,
+   "h": 440
+  }
+ ],
+ "lucrari-teren": [
+  {
+   "src": "assets/lucrari/lucrari-teren/terasamente-01.webp",
+   "thumb": "assets/lucrari/lucrari-teren/terasamente-01-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/terasamente-01-card.webp",
+   "alt": "Încărcător Bobcat la lucrări de terasamente, lângă Ungheni",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/terasamente-02.webp",
+   "thumb": "assets/lucrari/lucrari-teren/terasamente-02-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/terasamente-02-card.webp",
+   "alt": "Săpătură pentru fundație, cu încărcător Bobcat",
+   "w": 720,
+   "h": 271
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/terasamente-03.webp",
+   "thumb": "assets/lucrari/lucrari-teren/terasamente-03-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/terasamente-03-card.webp",
+   "alt": "Miniexcavator și Bobcat pe o săpătură pentru fundație",
+   "w": 720,
+   "h": 271
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/drum-03.webp",
+   "thumb": "assets/lucrari/lucrari-teren/drum-03-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/drum-03-card.webp",
+   "alt": "Pregătirea unui drum cu încărcător frontal",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/drum-04.webp",
+   "thumb": "assets/lucrari/lucrari-teren/drum-04-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/drum-04-card.webp",
+   "alt": "Decopertarea patului drumului cu încărcătorul",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/drum-02.webp",
+   "thumb": "assets/lucrari/lucrari-teren/drum-02-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/drum-02-card.webp",
+   "alt": "Excavator la pregătirea unui drum",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/drum-05.webp",
+   "thumb": "assets/lucrari/lucrari-teren/drum-05-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/drum-05-thumb.webp",
+   "alt": "Compactarea pietruirii cu un compactor",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/lucrari-teren/drum-01.webp",
+   "thumb": "assets/lucrari/lucrari-teren/drum-01-thumb.webp",
+   "card": "assets/lucrari/lucrari-teren/drum-01-thumb.webp",
+   "alt": "Compactor pe un drum pietruit",
+   "w": 540,
+   "h": 720
+  }
+ ],
+ "utilaje": [
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-01.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-01-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-01-card.webp",
+   "alt": "Hangarul firmei cu utilaje: încărcătoare-excavatoare Komatsu, autobasculantă, camion DAF și telehandler",
+   "w": 720,
+   "h": 406
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-02.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-02-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-02-card.webp",
+   "alt": "Autobetonieră galbenă, cu excavator CASE și camion DAF în fundal",
+   "w": 720,
+   "h": 406
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-03.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-03-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-03-card.webp",
+   "alt": "Excavator pe roți CASE 788 care ridică un panou pentru acoperișul unei hale",
+   "w": 586,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-04.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-04-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-04-card.webp",
+   "alt": "Compactor Dynapac cu cilindru, pe un drum pietruit",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-05.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-05-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-05-card.webp",
+   "alt": "Telehandler rotativ Manitou, parcat pe stradă",
+   "w": 405,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-06.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-06-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-06-card.webp",
+   "alt": "Camion cu platformă care transportă un mini-compactor, pentru servicii de miniexcavator, bobcat și transport",
+   "w": 720,
+   "h": 332
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-07.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-07-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-07-card.webp",
+   "alt": "Excavator pe roți CASE în carieră, cu cupa lăsată pe pământ",
+   "w": 720,
+   "h": 332
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-08.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-08-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-08-card.webp",
+   "alt": "Excavator pe roți CASE 788, văzut din lateral",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-09.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-09-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-09-card.webp",
+   "alt": "Miniexcavator Kubota care sapă într-un șanț",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-10.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-10-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-10-card.webp",
+   "alt": "Încărcător-excavator galben WB97R",
+   "w": 638,
+   "h": 480
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-11.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-11-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-11-card.webp",
+   "alt": "Miniexcavator Kubota și muncitori la o săpătură de rețea, pe un platou betonat",
+   "w": 540,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/utilaje-mecanisme/masini-12.webp",
+   "thumb": "assets/lucrari/utilaje-mecanisme/masini-12-thumb.webp",
+   "card": "assets/lucrari/utilaje-mecanisme/masini-12-card.webp",
+   "alt": "Autobetonieră care toarnă beton în șanțul fundației, cu armătura montată",
+   "w": 540,
+   "h": 720
+  }
+ ],
+ "dispozitive-vulcanizare": [
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-01.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-01-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-01-card.webp",
+   "alt": "Mașină de echilibrat roți BL520, cu panou digital și suport pentru greutăți",
+   "w": 542,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-02.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-02-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-02-card.webp",
+   "alt": "Strung vechi pentru prelucrarea metalelor, verde cu piese roșii",
+   "w": 720,
+   "h": 480
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-03.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-03-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-03-card.webp",
+   "alt": "Dispozitiv de montat și demontat anvelope BL545, cu braț și platou cu fălci",
+   "w": 480,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-04.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-04-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-04-card.webp",
+   "alt": "Dispozitiv mare pentru montat și demontat anvelope de camion",
+   "w": 576,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-05.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-05-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-05-card.webp",
+   "alt": "Mașină de presat furtunuri hidraulice HYDFLEX, cu panou de comandă",
+   "w": 720,
+   "h": 540
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-06.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-06-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-06-card.webp",
+   "alt": "Mașină HYDFLEX pentru tăierea furtunurilor hidraulice, cu motor electric",
+   "w": 542,
+   "h": 720
+  },
+  {
+   "src": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-07.webp",
+   "thumb": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-07-thumb.webp",
+   "card": "assets/lucrari/dispozitive-vulcanizare/dispozitiv-07-card.webp",
+   "alt": "Mașină HYDFLEX pentru dezbrăcarea furtunurilor, cu pedală de comandă",
+   "w": 576,
+   "h": 720
+  }
+ ]
+}
