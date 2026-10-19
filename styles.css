@@ -382,3 +382,10 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 /* 6 servicii: 3 coloane × 2 rânduri pe desktop (moștenit din regula de bază) */
 @media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.svc{--px:20px;--py:22px}.services{grid-template-columns:1fr}.svc-media{aspect-ratio:16/10}}
+
+/* Hartă */
+.map-sec{background:var(--surface-2);border-top:1px solid var(--border)}
+.map-card{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-1),var(--shadow-2);background:var(--surface)}
+.map-card iframe{display:block;width:100%;height:clamp(320px,46vw,460px);border:0}
+.map-link{margin-top:20px}
+@media (max-width:600px){.map-link{width:100%;justify-content:center;min-height:52px}}
