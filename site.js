@@ -53,16 +53,32 @@ const waHref = msg => 'https://wa.me/' + PHONE_DIGITS + '?text=' + encodeURIComp
     window.matchMedia('(min-width:1021px)').addEventListener('change', e => { if (e.matches) set(false); });
   }
 
-  /* formularul de ofertă (doar pe index) */
+  /* formularul de ofertă: se trimite prin WhatsApp la numărul firmei (PHONE) */
   const quote = document.getElementById('quote');
   if (quote) quote.addEventListener('submit', e => {
     e.preventDefault();
-    const n = document.getElementById('qname').value.trim(), ph = document.getElementById('qphone').value.trim();
+    const val = id => document.getElementById(id).value.trim();
+    const n = val('qname'), ph = val('qphone'), type = document.getElementById('qtype').value, det = val('qmsg');
     const done = document.getElementById('qdone');
     done.hidden = false;
-    done.textContent = (!n || !ph)
-      ? 'Completează numele și telefonul ca să te putem contacta.'
-      : 'Mulțumim, ' + n + '. Cererea pentru „' + document.getElementById('qtype').value + '” e înregistrată — revenim la ' + ph + '.';
+    if (!n || ph.replace(/\D/g, '').length < 6) {
+      done.textContent = 'Completează numele și un număr de telefon valid, ca să te putem contacta.';
+      return;
+    }
+    const msg = 'Bună ziua! Aș dori o ofertă.\n' +
+      'Nume: ' + n + '\n' +
+      'Telefon: ' + ph + '\n' +
+      'Tip lucrare: ' + type +
+      (det ? '\nDetalii: ' + det : '');
+    const url = waHref(msg);
+    const w = window.open(url, '_blank');
+    if (w) w.opener = null;
+    done.innerHTML = '';
+    done.append('Se deschide WhatsApp cu mesajul gata scris. Apasă „Trimite” acolo ca să ajungă la noi. Dacă nu s-a deschis, ');
+    const a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'apasă aici';
+    done.append(a, '.');
+    if (!w) done.append(' Sau sună-ne la ' + PHONE + '.');
   });
 
   /* galerii: pozele vin din galerie.json (se administrează din admin.html) */
