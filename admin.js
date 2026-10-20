@@ -11,9 +11,10 @@
     'constructii-civile': 'Construcții civile',
     'apa-canalizare': 'Apă și canalizare',
     'demolari': 'Demolări',
-    'lucrari-teren': 'Lucrări de teren',
+    'lucrari-teren': 'Lucrări de Terasament',
     'utilaje': 'Utilaje de Construcții',
-    'dispozitive-vulcanizare': 'Dispozitive pentru vulcanizare'
+    'dispozitive-vulcanizare': 'Vulcanizare pentru utilaje grele',
+    'sertizare-furtunuri': 'Sertizarea furtunurilor hidraulice'
   };
   const SIZES = { full: 1600, thumb: 720, card: 520 };   // latura maximă, px
   const QUALITY = { full: 0.8, thumb: 0.76, card: 0.7 };

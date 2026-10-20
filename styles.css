@@ -389,3 +389,7 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 .map-card iframe{display:block;width:100%;height:clamp(320px,46vw,460px);border:0}
 .map-link{margin-top:20px}
 @media (max-width:600px){.map-link{width:100%;justify-content:center;min-height:52px}}
+
+/* 7 servicii: 4 coloane pe desktop mare; cu 3 coloane, ultimul card se centrează */
+@media (min-width:1101px){.services{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:901px) and (max-width:1100px){.services .svc:last-child:nth-child(3n+1){grid-column:2}}
