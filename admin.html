@@ -69,8 +69,16 @@
 
     <div id="sec-prod" hidden>
       <div class="adm-card">
-        <h2>Poze pentru produsele din magazin</h2>
-        <p class="adm-hint">Produsele sunt cele din catalog; aici adaugi sau schimbi doar poza fiecăruia. Poza apare în cardul produsului de pe pagina „Magazin Piese”. Se micșorează automat.</p>
+        <h2>Produs nou</h2>
+        <p class="adm-hint">Completează datele, alege (opțional) o poză și apasă „Adaugă produsul”. Apare pe site după „Publică modificările”. Nu se afișează prețuri.</p>
+        <div class="adm-grid" id="pnew-fields"></div>
+        <label class="adm-lbl">Poză (opțional)<input type="file" id="pnew-file" accept="image/*"></label>
+        <div class="adm-btns"><button class="btn sm" id="pnew-add" type="button">Adaugă produsul</button></div>
+        <p class="adm-msg" id="pnew-msg" role="status"></p>
+      </div>
+      <div class="adm-card">
+        <h2 id="p-h">Produse în magazin</h2>
+        <p class="adm-hint">„Editează” schimbă numele, codul, categoria și descrierea. Cu ↑ ↓ schimbi ordinea în care apar. „Șterge produsul” îl scoate din magazin.</p>
         <ul class="adm-list" id="plist"></ul>
       </div>
     </div>

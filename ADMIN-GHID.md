@@ -31,14 +31,23 @@ Tokenul e ca o parolă specială, valabilă doar pentru acest site.
 
 Pozele se micșorează automat în browser (max. 1600 px) și se comprimă, deci pot fi alese direct din telefon, chiar de 5–8 MB fiecare.
 
-## 2b. Poze pentru produsele din Magazin Piese
+## 2b. Produsele din Magazin Piese
 
-În panou, apasă fila **Poze produse (Magazin Piese)**. Vezi lista celor 12 produse din catalog.
-- **Adaugă poză** / **Schimbă poza**: alegi poza din telefon sau calculator (o singură poză pe produs, se micșorează automat).
-- **Scoate poza**: produsul revine la pictograma de la început.
-- Apoi apeși **Publică modificările**, la fel ca la poze de lucrări. Poza apare în cardul produsului în 1–2 minute.
+În panou, apasă fila **Poze produse (Magazin Piese)**.
 
-Produsele (nume, cod, descriere) nu se schimbă din panou; pentru asta mă cauți pe mine.
+**Produs nou**
+1. În chenarul „Produs nou” completezi: nume și cod (obligatorii), categorie, tip vehicul, descriere scurtă. Poți alege și o poză.
+2. Apeși **Adaugă produsul**. Apare în lista de mai jos, marcat cu albastru.
+3. Apeși **Publică modificările**. Produsul apare în magazin în 1–2 minute.
+
+**Produse existente**
+- **Adaugă poză / Schimbă poza / Scoate poza**: o singură poză pe produs, micșorată automat.
+- **Editează**: schimbi numele, codul, categoria, tipul de vehicul sau descrierea.
+- **↑ ↓**: schimbi ordinea în care apar produsele.
+- **Șterge produsul**: îl scoate din magazin (cu poza lui).
+- După orice modificare apeși **Publică modificările**.
+
+Codul fiecărui produs trebuie să fie unic. Magazinul nu afișează prețuri. Categoriile sunt cele patru existente (Reparație, Valve, Echilibrare, Scule); pentru o categorie nouă mă cauți pe mine.
 
 ## 3. Probleme frecvente
 

@@ -31,6 +31,8 @@
   let prod = [];            // produse.json curent
   let pAdded = {};          // { idProdus: { o:{main:{blob,w,h}}, preview } } poze noi pentru produse
   let pRemoved = {};        // { idProdus: true } poza produsului se scoate
+  let pDirty = false;       // s-a schimbat lista de produse (adăugat / editat / șters / mutat)
+  let pDeleted = [];        // poze de produse de șters din repo (produse șterse)
   let mode = 'gal';         // 'gal' (poze lucrări) | 'prod' (poze produse)
 
   /* ---------- GitHub API ---------- */
@@ -98,7 +100,7 @@
     Object.keys(CATS).forEach(k => { if (!Array.isArray(data[k])) data[k] = []; });
     const pf = await gh('/contents/produse.json?ref=' + encodeURIComponent(REPO.branch) + '&_=' + Date.now());
     prod = JSON.parse(fromB64utf8(pf.content));
-    removed = {}; added = {}; pAdded = {}; pRemoved = {};
+    removed = {}; added = {}; pAdded = {}; pRemoved = {}; pDirty = false; pDeleted = [];
   }
 
   /* ---------- Procesare poze (în browser) ---------- */
@@ -146,6 +148,7 @@
     const sel = $('cat');
     if (!sel.options.length) Object.keys(CATS).forEach(k => sel.add(new Option(CATS[k], k)));
     renderList();
+    renderNewForm();
     renderProducts();
   }
 
@@ -212,7 +215,7 @@
 
   function dirty() {
     if (pendingCount()) return true;
-    if (Object.keys(pAdded).length || Object.keys(pRemoved).length) return true;
+    if (pDirty || Object.keys(pAdded).length || Object.keys(pRemoved).length) return true;
     if (data._order) return true;
     return Object.keys(CATS).some(k => (data[k] || []).some(p => p._edited));
   }
@@ -227,6 +230,7 @@
     const np = Object.keys(pAdded).length, npr = Object.keys(pRemoved).length;
     if (np) parts.push(np + (np === 1 ? ' poză de produs de adăugat' : ' poze de produs de adăugat'));
     if (npr) parts.push(npr + (npr === 1 ? ' poză de produs de scos' : ' poze de produs de scos'));
+    if (pDirty) parts.push('lista de produse modificată');
     if (!parts.length && dirty()) parts.push('descrieri / ordine schimbate');
     $('summary').textContent = parts.length ? 'Modificări: ' + parts.join(', ') + '.' : 'Nicio modificare.';
     $('publish').disabled = busy || !dirty();
@@ -255,9 +259,65 @@
     busy = false; renderProducts();
   }
 
+  const ICON_BY_CAT = { reparatie: 'patch', valve: 'valve', echilibrare: 'weight', scule: 'tool' };
+  const VEH = { universal: 'Universal', autoturisme: 'Autoturisme', camioane: 'Camioane' };
+  const optHtml = (o, sel) => Object.keys(o).map(k => '<option value="' + k + '"' + (k === sel ? ' selected' : '') + '>' + o[k] + '</option>').join('');
+
+  function removeProductImage(p) {
+    if (p.imagine && /^assets\/produse\//.test(p.imagine)) pDeleted.push(p.imagine);
+    if (pAdded[p.id]) { URL.revokeObjectURL(pAdded[p.id].preview); delete pAdded[p.id]; }
+    delete pRemoved[p.id];
+  }
+
+  function fieldsHtml(p) {
+    return '<label class="adm-lbl">Nume produs *<input type="text" data-f="nume" maxlength="120"></label>' +
+      '<label class="adm-lbl">Cod produs *<input type="text" data-f="cod" maxlength="30"></label>' +
+      '<label class="adm-lbl">Categorie<select data-f="categorie">' + optHtml(CAT_P, p.categorie) + '</select></label>' +
+      '<label class="adm-lbl">Tip vehicul<select data-f="vehicul">' + optHtml(VEH, p.vehicul) + '</select></label>' +
+      '<label class="adm-lbl adm-wide">Descriere scurtă<textarea data-f="descriere" maxlength="300" rows="2"></textarea></label>';
+  }
+
+  function bindFields(root, p, onChange) {
+    root.querySelectorAll('[data-f]').forEach(el => {
+      el.value = p[el.dataset.f] == null ? '' : p[el.dataset.f];
+      el.addEventListener('input', () => { p[el.dataset.f] = el.value; onChange && onChange(el); });
+    });
+  }
+
+  function validProduct(p, list) {
+    if (!String(p.nume || '').trim()) return 'Scrie numele produsului.';
+    if (!String(p.cod || '').trim()) return 'Scrie codul produsului.';
+    if (list.some(x => x !== p && String(x.cod).trim().toLowerCase() === String(p.cod).trim().toLowerCase())) return 'Există deja un produs cu codul „' + p.cod + '”.';
+    return '';
+  }
+
+  /* formularul „Produs nou” */
+  const newP = { nume: '', cod: '', categorie: 'reparatie', vehicul: 'universal', descriere: '' };
+  let newFile = null;
+  function renderNewForm() {
+    const box = $('pnew-fields');
+    box.innerHTML = fieldsHtml(newP);
+    bindFields(box, newP);
+  }
+
+  async function addProduct() {
+    const err = validProduct(newP, prod);
+    if (err) { say($('pnew-msg'), err, 'err'); return; }
+    const id = 'n' + Date.now().toString(36);
+    const item = { id, cod: newP.cod.trim(), nume: newP.nume.trim(), descriere: newP.descriere.trim(),
+      categorie: newP.categorie, imagine: null, vehicul: newP.vehicul, pictograma: ICON_BY_CAT[newP.categorie] || 'can' };
+    prod.push(item); pDirty = true;
+    if (newFile) await setProductPhoto(id, newFile);
+    newFile = null; $('pnew-file').value = '';
+    Object.assign(newP, { nume: '', cod: '', descriere: '' });
+    renderNewForm();
+    say($('pnew-msg'), 'Produs adăugat. Apasă „Publică modificările” ca să apară pe site.', 'ok');
+    renderProducts();
+  }
+
   function renderProducts() {
     const ul = $('plist'); ul.innerHTML = '';
-    prod.forEach(p => {
+    prod.forEach((p, i) => {
       const li = document.createElement('li');
       const pend = pAdded[p.id], rem = pRemoved[p.id];
       li.className = 'adm-item' + (pend ? ' new' : '') + (rem ? ' del' : '');
@@ -265,7 +325,12 @@
       li.innerHTML = (cur ? '<img class="adm-thumb" alt="">' : '<div class="adm-thumb adm-noimg" aria-hidden="true">fără poză</div>') +
         '<div class="adm-fields"><div><span class="adm-tag"></span><div class="adm-pname"></div></div>' +
         '<div class="adm-btns"><button type="button" data-act="pick"></button>' +
-        '<button type="button" class="danger" data-act="rm">Scoate poza</button></div>' +
+        '<button type="button" data-act="rm">Scoate poza</button>' +
+        '<button type="button" data-act="edit">Editează</button>' +
+        '<button type="button" data-act="up" aria-label="Mută mai sus">↑</button>' +
+        '<button type="button" data-act="down" aria-label="Mută mai jos">↓</button>' +
+        '<button type="button" class="danger" data-act="del">Șterge produsul</button></div>' +
+        '<div class="adm-edit" hidden></div>' +
         '<input type="file" accept="image/*" hidden></div>';
       if (cur) li.querySelector('img').src = cur;
       li.querySelector('.adm-tag').textContent = p.cod + ' · ' + (CAT_P[p.categorie] || p.categorie) + (pend ? ' · poză nouă' : rem ? ' · poza se scoate' : '');
@@ -273,16 +338,39 @@
       const pick = li.querySelector('[data-act=pick]');
       pick.textContent = cur ? 'Schimbă poza' : 'Adaugă poză';
       li.querySelector('[data-act=rm]').disabled = !cur;
+      li.querySelector('[data-act=up]').disabled = i === 0;
+      li.querySelector('[data-act=down]').disabled = i === prod.length - 1;
       const fi = li.querySelector('input[type=file]');
       pick.addEventListener('click', () => fi.click());
       fi.addEventListener('change', () => { setProductPhoto(p.id, fi.files[0]); fi.value = ''; });
       li.querySelector('[data-act=rm]').addEventListener('click', () => {
-        if (pend) { URL.revokeObjectURL(pend.preview); delete pAdded[p.id]; }
-        else pRemoved[p.id] = true;
+        if (pend) { URL.revokeObjectURL(pend.preview); delete pAdded[p.id]; } else pRemoved[p.id] = true;
         renderProducts();
+      });
+      const ed = li.querySelector('.adm-edit');
+      li.querySelector('[data-act=edit]').addEventListener('click', e => {
+        if (!ed.hidden) { ed.hidden = true; e.target.textContent = 'Editează'; return; }
+        ed.innerHTML = fieldsHtml(p) + '<p class="adm-msg" data-m></p>';
+        ed.hidden = false; e.target.textContent = 'Închide';
+        bindFields(ed, p, () => {
+          pDirty = true;
+          const er = validProduct(p, prod);
+          say(ed.querySelector('[data-m]'), er, er ? 'err' : '');
+          li.querySelector('.adm-pname').textContent = p.nume;
+          li.querySelector('.adm-tag').textContent = p.cod + ' · ' + (CAT_P[p.categorie] || p.categorie);
+          updateSummary();
+        });
+      });
+      li.querySelector('[data-act=up]').addEventListener('click', () => { if (i > 0) { prod.splice(i - 1, 0, prod.splice(i, 1)[0]); pDirty = true; renderProducts(); } });
+      li.querySelector('[data-act=down]').addEventListener('click', () => { if (i < prod.length - 1) { prod.splice(i + 1, 0, prod.splice(i, 1)[0]); pDirty = true; renderProducts(); } });
+      li.querySelector('[data-act=del]').addEventListener('click', () => {
+        if (!confirm('Ștergi produsul „' + p.nume + '” din magazin?')) return;
+        removeProductImage(p);
+        prod.splice(i, 1); pDirty = true; renderProducts();
       });
       ul.appendChild(li);
     });
+    $('p-h').textContent = 'Produse în magazin — ' + prod.length;
     updateSummary();
   }
 
@@ -297,6 +385,8 @@
   /* ---------- Publicare (un singur commit) ---------- */
   async function publish() {
     if (busy || !dirty()) return;
+    const bad = prod.map(p => validProduct(p, prod)).find(Boolean);
+    if (bad) { say($('msg'), 'Produs incomplet: ' + bad, 'err'); return; }
     busy = true; $('publish').disabled = true;
     const msg = $('msg');
     try {
@@ -345,12 +435,13 @@
         if (item.imagine && /^assets\/produse\//.test(item.imagine)) tree.push({ path: item.imagine, mode: '100644', type: 'blob', sha: null });
         item.imagine = path;
       }
+      pDeleted.forEach(path => tree.push({ path, mode: '100644', type: 'blob', sha: null }));
       Object.keys(pRemoved).forEach(id => {
         const item = prodOut.find(x => x.id === id); if (!item) return;
         if (item.imagine && /^assets\/produse\//.test(item.imagine)) tree.push({ path: item.imagine, mode: '100644', type: 'blob', sha: null });
         item.imagine = null;
       });
-      if (pn || Object.keys(pRemoved).length) {
+      if (pn || pDirty || Object.keys(pRemoved).length) {
         const pj = await gh('/git/blobs', { method: 'POST', body: { content: b64utf8(JSON.stringify(prodOut, null, 1)), encoding: 'base64' } });
         tree.push({ path: 'produse.json', mode: '100644', type: 'blob', sha: pj.sha });
       }
@@ -389,6 +480,8 @@
     location.reload();
   });
   $('cat').addEventListener('change', renderList);
+  $('pnew-add').addEventListener('click', addProduct);
+  $('pnew-file').addEventListener('change', e => { newFile = e.target.files[0] || null; });
   $('tab-gal').addEventListener('click', () => setMode('gal'));
   $('tab-prod').addEventListener('click', () => setMode('prod'));
   $('publish').addEventListener('click', publish);

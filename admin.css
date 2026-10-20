@@ -54,3 +54,12 @@
 #sec-gal[hidden],#sec-prod[hidden]{display:none}
 .adm-noimg{display:grid;place-items:center;font:500 11px var(--f-mono);color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;text-align:center}
 .adm-pname{font-weight:600;color:var(--carbon);line-height:1.3}
+
+.adm-grid,.adm-edit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.adm-edit{margin:10px 0 0}
+.adm-edit[hidden]{display:none}
+.adm-lbl{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--carbon)}
+.adm-lbl input,.adm-lbl select,.adm-lbl textarea{min-height:44px;font-size:16px;font-weight:400}
+.adm-wide{grid-column:1/-1}
+.adm-edit .adm-msg{grid-column:1/-1;margin:0}
+@media (max-width:520px){.adm-grid,.adm-edit{grid-template-columns:1fr}}
