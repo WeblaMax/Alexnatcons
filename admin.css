@@ -47,3 +47,10 @@
   .adm-thumb{width:72px;height:72px}
   .adm-publish .btn{width:100%;justify-content:center}
 }
+
+.adm-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.adm-tabs .chip{min-height:44px}
+#sec-gal,#sec-prod{display:grid;gap:20px}
+#sec-gal[hidden],#sec-prod[hidden]{display:none}
+.adm-noimg{display:grid;place-items:center;font:500 11px var(--f-mono);color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;text-align:center}
+.adm-pname{font-weight:600;color:var(--carbon);line-height:1.3}

@@ -31,6 +31,15 @@ Tokenul e ca o parolă specială, valabilă doar pentru acest site.
 
 Pozele se micșorează automat în browser (max. 1600 px) și se comprimă, deci pot fi alese direct din telefon, chiar de 5–8 MB fiecare.
 
+## 2b. Poze pentru produsele din Magazin Piese
+
+În panou, apasă fila **Poze produse (Magazin Piese)**. Vezi lista celor 12 produse din catalog.
+- **Adaugă poză** / **Schimbă poza**: alegi poza din telefon sau calculator (o singură poză pe produs, se micșorează automat).
+- **Scoate poza**: produsul revine la pictograma de la început.
+- Apoi apeși **Publică modificările**, la fel ca la poze de lucrări. Poza apare în cardul produsului în 1–2 minute.
+
+Produsele (nume, cod, descriere) nu se schimbă din panou; pentru asta mă cauți pe mine.
+
 ## 3. Probleme frecvente
 
 | Mesaj | Ce faci |
@@ -43,6 +52,7 @@ Pozele se micșorează automat în browser (max. 1600 px) și se comprimă, deci
 
 ## 4. Pentru cine întreține codul
 
+- Produsele din magazin sunt în **`produse.json`** (câmpul `imagine` se setează din panou); pozele lor în `assets/produse/`.
 - Pozele și listele lor sunt în **`galerie.json`**. Fiecare poză are `src` (mare), `thumb` (miniatură), `card` (slideshow), `alt`, `w`, `h`.
 - Pozele încărcate stau în `assets/lucrari/<categorie>/`.
 - Repo-ul și ramura sunt în `admin.js` (constanta `REPO`). Categoriile sunt în `CATS`.

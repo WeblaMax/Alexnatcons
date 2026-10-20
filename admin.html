@@ -38,6 +38,12 @@
 
   <!-- 2. Panou -->
   <section id="panel" hidden>
+    <div class="adm-tabs" role="group" aria-label="Ce administrezi">
+      <button type="button" class="chip" id="tab-gal" aria-pressed="true">Poze lucrări</button>
+      <button type="button" class="chip" id="tab-prod" aria-pressed="false">Poze produse (Magazin Piese)</button>
+    </div>
+
+    <div id="sec-gal">
     <div class="adm-card">
       <h1>Poze pe site</h1>
       <div class="adm-row">
@@ -57,6 +63,16 @@
       <p class="adm-hint">Scrie sub fiecare poză o descriere scurtă (apare pentru Google și pentru cei care nu văd poza). Cu ↑ ↓ schimbi ordinea; prima poză apare prima în card.</p>
       <ul class="adm-list" id="list"></ul>
       <p class="adm-empty" id="empty" hidden>Nu sunt poze în această categorie.</p>
+    </div>
+
+    </div>
+
+    <div id="sec-prod" hidden>
+      <div class="adm-card">
+        <h2>Poze pentru produsele din magazin</h2>
+        <p class="adm-hint">Produsele sunt cele din catalog; aici adaugi sau schimbi doar poza fiecăruia. Poza apare în cardul produsului de pe pagina „Magazin Piese”. Se micșorează automat.</p>
+        <ul class="adm-list" id="plist"></ul>
+      </div>
     </div>
 
     <div class="adm-card adm-publish">

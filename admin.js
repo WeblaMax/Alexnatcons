@@ -16,7 +16,8 @@
     'dispozitive-vulcanizare': 'Vulcanizare pentru utilaje grele',
     'sertizare-furtunuri': 'Sertizarea furtunurilor hidraulice'
   };
-  const SIZES = { full: 1600, thumb: 720, card: 520 };   // latura maximă, px
+  const SIZES = { full: 1600, thumb: 720, card: 520 };
+  const PROD_SIZE = 900, PROD_Q = 0.8;                 // poza unui produs (un singur fișier)   // latura maximă, px
   const QUALITY = { full: 0.8, thumb: 0.76, card: 0.7 };
   const TOKEN_KEY = 'anc-admin-token';
 
@@ -27,6 +28,10 @@
   let removed = {};         // { cat: [item, …] } pozele marcate pentru ștergere
   let added = {};           // { cat: [{files, alt, …}] } pozele noi, încă nepublicate
   let busy = false;
+  let prod = [];            // produse.json curent
+  let pAdded = {};          // { idProdus: { o:{main:{blob,w,h}}, preview } } poze noi pentru produse
+  let pRemoved = {};        // { idProdus: true } poza produsului se scoate
+  let mode = 'gal';         // 'gal' (poze lucrări) | 'prod' (poze produse)
 
   /* ---------- GitHub API ---------- */
   async function gh(path, opts) {
@@ -91,7 +96,9 @@
     const f = await gh('/contents/galerie.json?ref=' + encodeURIComponent(REPO.branch) + '&_=' + Date.now());
     data = JSON.parse(fromB64utf8(f.content));
     Object.keys(CATS).forEach(k => { if (!Array.isArray(data[k])) data[k] = []; });
-    removed = {}; added = {};
+    const pf = await gh('/contents/produse.json?ref=' + encodeURIComponent(REPO.branch) + '&_=' + Date.now());
+    prod = JSON.parse(fromB64utf8(pf.content));
+    removed = {}; added = {}; pAdded = {}; pRemoved = {};
   }
 
   /* ---------- Procesare poze (în browser) ---------- */
@@ -139,6 +146,7 @@
     const sel = $('cat');
     if (!sel.options.length) Object.keys(CATS).forEach(k => sel.add(new Option(CATS[k], k)));
     renderList();
+    renderProducts();
   }
 
   function pendingCount() {
@@ -204,6 +212,7 @@
 
   function dirty() {
     if (pendingCount()) return true;
+    if (Object.keys(pAdded).length || Object.keys(pRemoved).length) return true;
     if (data._order) return true;
     return Object.keys(CATS).some(k => (data[k] || []).some(p => p._edited));
   }
@@ -215,9 +224,74 @@
     const parts = [];
     if (na) parts.push(na + ' de adăugat');
     if (nr) parts.push(nr + ' de șters');
+    const np = Object.keys(pAdded).length, npr = Object.keys(pRemoved).length;
+    if (np) parts.push(np + (np === 1 ? ' poză de produs de adăugat' : ' poze de produs de adăugat'));
+    if (npr) parts.push(npr + (npr === 1 ? ' poză de produs de scos' : ' poze de produs de scos'));
     if (!parts.length && dirty()) parts.push('descrieri / ordine schimbate');
     $('summary').textContent = parts.length ? 'Modificări: ' + parts.join(', ') + '.' : 'Nicio modificare.';
     $('publish').disabled = busy || !dirty();
+  }
+
+  /* ---------- Poze produse (Magazin Piese) ---------- */
+  const CAT_P = { reparatie: 'Reparație', valve: 'Valve', echilibrare: 'Echilibrare', scule: 'Scule' };
+
+  async function processProduct(file) {
+    const bmp = await createImageBitmap(file);
+    const o = await resize(bmp, PROD_SIZE, PROD_Q);
+    if (bmp.close) bmp.close();
+    return { main: o };
+  }
+
+  async function setProductPhoto(id, file) {
+    if (!file || !/^image\//.test(file.type)) { say($('msg'), 'Alege un fișier de tip imagine.', 'err'); return; }
+    busy = true; say($('msg'), 'Se procesează poza…');
+    try {
+      const o = await processProduct(file);
+      if (pAdded[id]) URL.revokeObjectURL(pAdded[id].preview);
+      pAdded[id] = { o, preview: URL.createObjectURL(o.main.blob) };
+      delete pRemoved[id];
+      say($('msg'), '');
+    } catch (e) { say($('msg'), 'Nu pot citi poza (' + e.message + ').', 'err'); }
+    busy = false; renderProducts();
+  }
+
+  function renderProducts() {
+    const ul = $('plist'); ul.innerHTML = '';
+    prod.forEach(p => {
+      const li = document.createElement('li');
+      const pend = pAdded[p.id], rem = pRemoved[p.id];
+      li.className = 'adm-item' + (pend ? ' new' : '') + (rem ? ' del' : '');
+      const cur = rem ? null : (pend ? pend.preview : p.imagine);
+      li.innerHTML = (cur ? '<img class="adm-thumb" alt="">' : '<div class="adm-thumb adm-noimg" aria-hidden="true">fără poză</div>') +
+        '<div class="adm-fields"><div><span class="adm-tag"></span><div class="adm-pname"></div></div>' +
+        '<div class="adm-btns"><button type="button" data-act="pick"></button>' +
+        '<button type="button" class="danger" data-act="rm">Scoate poza</button></div>' +
+        '<input type="file" accept="image/*" hidden></div>';
+      if (cur) li.querySelector('img').src = cur;
+      li.querySelector('.adm-tag').textContent = p.cod + ' · ' + (CAT_P[p.categorie] || p.categorie) + (pend ? ' · poză nouă' : rem ? ' · poza se scoate' : '');
+      li.querySelector('.adm-pname').textContent = p.nume;
+      const pick = li.querySelector('[data-act=pick]');
+      pick.textContent = cur ? 'Schimbă poza' : 'Adaugă poză';
+      li.querySelector('[data-act=rm]').disabled = !cur;
+      const fi = li.querySelector('input[type=file]');
+      pick.addEventListener('click', () => fi.click());
+      fi.addEventListener('change', () => { setProductPhoto(p.id, fi.files[0]); fi.value = ''; });
+      li.querySelector('[data-act=rm]').addEventListener('click', () => {
+        if (pend) { URL.revokeObjectURL(pend.preview); delete pAdded[p.id]; }
+        else pRemoved[p.id] = true;
+        renderProducts();
+      });
+      ul.appendChild(li);
+    });
+    updateSummary();
+  }
+
+  function setMode(m) {
+    mode = m;
+    $('sec-gal').hidden = m !== 'gal';
+    $('sec-prod').hidden = m !== 'prod';
+    $('tab-gal').setAttribute('aria-pressed', m === 'gal');
+    $('tab-prod').setAttribute('aria-pressed', m === 'prod');
   }
 
   /* ---------- Publicare (un singur commit) ---------- */
@@ -257,6 +331,30 @@
           .forEach(path => tree.push({ path, mode: '100644', type: 'blob', sha: null }));
       }));
 
+      /* poze produse: un fișier pe produs; vechea poză se șterge din repo */
+      const prodOut = JSON.parse(JSON.stringify(prod));
+      let pn = 0;
+      for (const id of Object.keys(pAdded)) {
+        const item = prodOut.find(x => x.id === id); if (!item) continue;
+        pn++; say(msg, 'Se încarcă poza produsului ' + pn + '…');
+        const m = pAdded[id].o.main;
+        const ext = m.blob.type === 'image/webp' ? 'webp' : 'jpg';
+        const path = 'assets/produse/' + id + '-' + stamp + '.' + ext;
+        const blob = await gh('/git/blobs', { method: 'POST', body: { content: await blobToB64(m.blob), encoding: 'base64' } });
+        tree.push({ path, mode: '100644', type: 'blob', sha: blob.sha });
+        if (item.imagine && /^assets\/produse\//.test(item.imagine)) tree.push({ path: item.imagine, mode: '100644', type: 'blob', sha: null });
+        item.imagine = path;
+      }
+      Object.keys(pRemoved).forEach(id => {
+        const item = prodOut.find(x => x.id === id); if (!item) return;
+        if (item.imagine && /^assets\/produse\//.test(item.imagine)) tree.push({ path: item.imagine, mode: '100644', type: 'blob', sha: null });
+        item.imagine = null;
+      });
+      if (pn || Object.keys(pRemoved).length) {
+        const pj = await gh('/git/blobs', { method: 'POST', body: { content: b64utf8(JSON.stringify(prodOut, null, 1)), encoding: 'base64' } });
+        tree.push({ path: 'produse.json', mode: '100644', type: 'blob', sha: pj.sha });
+      }
+
       /* galerie.json actualizat */
       say(msg, 'Se salvează lista de poze…');
       const gj = await gh('/git/blobs', { method: 'POST', body: { content: b64utf8(JSON.stringify(out, null, 1)), encoding: 'base64' } });
@@ -267,12 +365,13 @@
       const parent = await gh('/git/commits/' + ref.object.sha);
       const t = await gh('/git/trees', { method: 'POST', body: { base_tree: parent.tree.sha, tree } });
       const c = await gh('/git/commits', { method: 'POST', body: {
-        message: 'Admin: actualizare poze (' + (n ? n + ' noi' : 'modificări') + ')', tree: t.sha, parents: [ref.object.sha] } });
+        message: 'Admin: actualizare poze (' + (n + pn ? (n + pn) + ' noi' : 'modificări') + ')', tree: t.sha, parents: [ref.object.sha] } });
       await gh('/git/refs/heads/' + REPO.branch, { method: 'PATCH', body: { sha: c.sha } });
 
       Object.values(added).forEach(l => l.forEach(p => URL.revokeObjectURL(p.preview)));
+      Object.values(pAdded).forEach(p => URL.revokeObjectURL(p.preview));
       await loadData();
-      renderList();
+      renderList(); renderProducts();
       say(msg, 'Gata! Pozele apar pe site în 1–2 minute (reîncarcă pagina cu Ctrl+Shift+R).', 'ok');
     } catch (e) {
       say(msg, e.status === 401 ? 'Tokenul a expirat — conectează-te din nou.' :
@@ -290,6 +389,8 @@
     location.reload();
   });
   $('cat').addEventListener('change', renderList);
+  $('tab-gal').addEventListener('click', () => setMode('gal'));
+  $('tab-prod').addEventListener('click', () => setMode('prod'));
   $('publish').addEventListener('click', publish);
 
   const drop = $('drop'), input = $('files');
