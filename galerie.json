@@ -403,5 +403,70 @@
    "h": 720
   }
  ],
- "sertizare-furtunuri": []
+ "sertizare-furtunuri": [
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-01.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-01-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-01-card.webp",
+   "alt": "Cutie de lemn plină cu furtunuri hidraulice sertizate, pregătite pentru livrare",
+   "w": 480,
+   "h": 640
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-02.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-02-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-02-card.webp",
+   "alt": "Teanc mare de furtunuri hidraulice sertizate, cu etichete",
+   "w": 478,
+   "h": 641
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-03.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-03-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-03-card.webp",
+   "alt": "Furtunuri hidraulice sertizate, cu racorduri drepte și cotite",
+   "w": 516,
+   "h": 387
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-04.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-04-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-04-card.webp",
+   "alt": "Furtun hidraulic sertizat, cu racorduri la capete",
+   "w": 511,
+   "h": 391
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-05.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-05-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-05-card.webp",
+   "alt": "Racorduri hidraulice cotite și mansoane pentru sertizare",
+   "w": 335,
+   "h": 597
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-06.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-06-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-06-card.webp",
+   "alt": "Furtunuri hidraulice gata sertizate, cu racorduri la capete",
+   "w": 447,
+   "h": 405
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-07.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-07-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-07-card.webp",
+   "alt": "Două furtunuri hidraulice sertizate, cu dungă verde",
+   "w": 394,
+   "h": 700
+  },
+  {
+   "src": "assets/lucrari/sertizare-furtunuri/furtun-08.webp",
+   "thumb": "assets/lucrari/sertizare-furtunuri/furtun-08-thumb.webp",
+   "card": "assets/lucrari/sertizare-furtunuri/furtun-08-card.webp",
+   "alt": "Colac de furtun hidraulic și un racord, ținut în mână",
+   "w": 480,
+   "h": 640
+  }
+ ]
 }
