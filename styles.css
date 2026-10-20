@@ -396,3 +396,14 @@ dialog.lightbox[open]{display:flex;align-items:center;justify-content:center}
 
 .form .btn svg{flex:none}
 .form-note{margin:0;font-size:13px;color:var(--text-2);line-height:1.5}
+
+/* Credit dezvoltator (footer) */
+footer .wrap{row-gap:24px}
+.credit{display:flex;align-items:center;gap:16px;flex:0 1 auto;margin-left:auto;padding:12px 26px 12px 14px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.04);text-decoration:none!important;transition:border-color .25s,background .25s,transform .25s}
+.credit:hover{border-color:var(--accent);background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.credit-mx{flex:none;display:grid;place-items:center;width:52px;height:52px;border:1px solid var(--accent);border-radius:50%;font:500 18px var(--f-display);letter-spacing:.08em;color:var(--accent);font-family:Georgia,"Times New Roman",serif}
+.credit-t{display:grid;gap:2px;min-width:0}
+.credit-t small{font:500 10px var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.credit-t b{font-size:15px;font-weight:600;color:#fff;line-height:1.3}
+.credit-t em{font-style:normal;font-size:13px;color:var(--accent)}
+@media (max-width:700px){.credit{margin-left:0;width:100%;border-radius:28px}}
